@@ -18,15 +18,17 @@ When using any url it checks against 7 rules producing a score instead of a yes/
 
 6) IP address detection; Most trusted domains don't have a raw IP address, it will have a domain name, such as 'bankname.com' however sometimes a raw IP address is used instead as it's cheaper than to rent a domain name. Additionally with the earlier methods such as hiding the real destination with the '@' symbol, by detecting if there is an IP address in the link it can show the hidden destinations
 
-7) Typo squatting; Typo squatting is when attackers register a lookalike domain, examples include 'rnicrosoft' instead of 'microsoft' or 'amaz0n' instead of 'amazon'. By creating a list of trusted domains, the detector will compare against those trusted domains, this can be hard to spot to the human eye due to the adjustments only being a few characters
+7) Typo squatting; Typo squatting is when attackers register a lookalike domain, examples include 'rnicrosoft' instead of 'microsoft' or 'amaz0n' instead of 'amazon'. By creating a list of trusted domains, the detector will compare against those trusted domains, this can be hard to spot to the human eye due to the adjustments only being a few characters. The main weakness of this is it is only as strong as the list of known domains.
 
 ## How to run:
 ### Requirements:
 
 - Python
 
+- To run it, on the second line paste your link in between the "" and press run. Then read the terminal for the results. 
+
 ## Design decisions & Limitations: 
 
-As mentioned earlier by using 7 small rules it shows exactly what part of the url is suspicious, as mentioned not every flag means it's suspicious, for example if you take 'amazon.com' which is a real domain, because it does not have https, it would flag, however using other rules such as typo squatting, you would know it is the real domain and not a lookalike domain. 
+As mentioned earlier by using 7 small rules it shows exactly what part of the url is suspicious, as mentioned not every flag means it's suspicious, for example if you take 'amazon.com' which is a real domain, because it does not have https, it would flag, however using other rules such as typo squatting, you would know it is the real domain and not a lookalike domain. One vulnerability of this is the rule 7 threshold, links like 'paypal-secure.com' can slip through the detector because instead of swapping characters around it adds words, since the word 'secure' is in the list for suspicious words it would create a red flag but if it was not in that list it would slip through. 
 
 For future improvements one thing I could do is using a machine learning classifier, which would be trained on common phishing data, this would be more secure as it can update faster than a human could, this also could combine with multiple flags like email filtering and more.
