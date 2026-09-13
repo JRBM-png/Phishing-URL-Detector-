@@ -18,4 +18,4 @@ When using any url it checks against 7 rules producing a score instead of a yes/
 
 6) IP address detection; Most trusted domains don't have a raw IP address, it will have a domain name, such as 'bankname.com' however sometimes a raw IP address is used instead as it's cheaper than to rent a domain name. Additionally with the earlier methods such as hiding the real destination with the '@' symbol, by detecting if there is an IP address in the link it can show the hidden destinations.
 
-7) Typo squatting; 
+7) Typo squatting; Typo squatting is when attackers register a lookalike domain, examples include 'rnicrosoft' instead of 'microsoft' or 'amaz0n' instead of 'amazon'. By creating a list of trusted domains, the detector will compare against those trusted domains, this can be hard to spot to the human eye due to the adjustments only being a few characters. 
